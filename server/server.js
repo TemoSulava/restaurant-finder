@@ -96,6 +96,7 @@ app.delete('/api/v1/restaurants/:id', async (req, res) => {
     res.status(200).json({
       status: "success",
     });
+    
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
