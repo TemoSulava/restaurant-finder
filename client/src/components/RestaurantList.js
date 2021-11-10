@@ -32,17 +32,35 @@ const RestaurantList = (props) => {
     navigate(`/restaurants/${id}/update`);
   };
 
+  const restaurantListColumnNames = [
+    {
+      name: "Restaurant",
+    },
+    {
+      name: "location",
+    },
+    {
+      name: "Price Rnage",
+    },
+    {
+      name: "Ratings",
+    },
+    {
+      name: "Edit",
+    },
+    {
+      name: "Delete",
+    },
+  ];
+
   return (
     <div className="list-group">
       <table className="table table-hover table-dark">
         <thead>
           <tr className="bg-primary">
-            <th scope="col">Restaurant</th>
-            <th scope="col">Location</th>
-            <th scope="col">Price Range</th>
-            <th scope="col">Ratings</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            {restaurantListColumnNames.map((column) => (
+              <th scope="col">{column.name}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -55,7 +73,12 @@ const RestaurantList = (props) => {
                   <td>{"$".repeat(restaurant.price_range)}</td>
                   <td>Reviews</td>
                   <td>
-                    <button onClick={() => handleUpdate(restaurant.id)} className="btn btn-warning">Update</button>
+                    <button
+                      onClick={() => handleUpdate(restaurant.id)}
+                      className="btn btn-warning"
+                    >
+                      Update
+                    </button>
                   </td>
                   <td>
                     <button
